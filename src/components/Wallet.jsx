@@ -4,9 +4,10 @@ import { useWalletConn } from "../hooks/useWalletConnect";
 import { useBalance } from "../hooks/useAccountBalance";
 
 const Wallet = () => {
-  const [inputAddress, setInputAddress] = useState(""); // Custom address input state
-  const [balanceForInput, setBalanceForInput] = useState(null); // State to store balance for input address
-  
+  const [inputAddress, setInputAddress] = useState(""); //input 
+  const [balanceForInput, setBalanceForInput] = useState(null); 
+
+
   const { account, chainId, isConnected, errorMessage, getAccount, disconnectAccount } = useWalletConn();
   
  
@@ -44,13 +45,13 @@ const Wallet = () => {
         />
         <button onClick={handleGetBalanceForInput}>Get Balance for Address</button>
 
-        {/* Display balance for inputted address */}
+        
         <h3>
           Balance for {inputAddress}: {balanceForInput !== null ? `${balanceForInput} ETH` : "Enter a valid address"}
         </h3>
       </div>
 
-      {/* Wallet connection info */}
+
       <div>
         {!isConnected ? (
           <button onClick={getAccount} className="enableEthereumButton">

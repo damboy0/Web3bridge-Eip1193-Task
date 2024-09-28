@@ -24,7 +24,7 @@ export const useBalance = (provider, account, chainId) => {
 
   useEffect(() => {
     if (account && provider) {
-      fetchBalance(); // Fetch the balance when account or provider changes
+      fetchBalance(); // get balance when provider changes
     }
   }, [account, provider, chainId]);
 
