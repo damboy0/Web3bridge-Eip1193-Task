@@ -1,15 +1,15 @@
+// src/components/Wallet.jsx
 import React, { useState } from "react";
-import { useWalletConn } from "../hooks/useWalletConnect";
+import { useWallet } from "../context/WalletProvider"; 
 import { useBalance } from "../hooks/useAccountBalance";
 
 const Wallet = () => {
-  const [inputAddress, setInputAddress] = useState(""); //input 
+  const [inputAddress, setInputAddress] = useState(""); 
   const [balanceForInput, setBalanceForInput] = useState(null); 
-
-
-  const { account, chainId, isConnected, errorMessage, getAccount, disconnectAccount } = useWalletConn();
   
- 
+  const { account, chainId, isConnected, errorMessage, getAccount, disconnectAccount } = useWallet();
+  
+  
   const { balance: connectedAccountBalance, fetchBalance } = useBalance(window.ethereum, account, chainId);
 
   
@@ -35,6 +35,7 @@ const Wallet = () => {
 
   return (
     <div>
+      
       <div>
         <input
           type="text"
@@ -44,13 +45,13 @@ const Wallet = () => {
         />
         <button onClick={handleGetBalanceForInput}>Get Balance for Address</button>
 
-        
+       
         <h3>
           Balance for {inputAddress}: {balanceForInput !== null ? `${balanceForInput} ETH` : "Enter a valid address"}
         </h3>
       </div>
 
-
+     
       <div>
         {!isConnected ? (
           <button onClick={getAccount} className="enableEthereumButton">
