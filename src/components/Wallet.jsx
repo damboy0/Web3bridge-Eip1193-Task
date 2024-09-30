@@ -1,4 +1,3 @@
-// src/components/Wallet.jsx
 import React, { useState } from "react";
 import { useWalletConn } from "../hooks/useWalletConnect";
 import { useBalance } from "../hooks/useAccountBalance";

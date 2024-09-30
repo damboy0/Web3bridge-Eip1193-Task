@@ -1,4 +1,3 @@
-// src/hooks/useBalance.js
 import { useState, useEffect } from "react";
 
 export const useBalance = (provider, account, chainId) => {
